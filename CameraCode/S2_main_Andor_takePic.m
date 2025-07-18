@@ -9,8 +9,8 @@ clc;clear;close all;
 
 cd ..
 %% param
-output_dir='data/20250612';
-subject_name='ph1_R5';
+output_dir='data/20250718';
+subject_name='ph1_R3';
 file_name_prefix='SDS_spec_arr_'; % the file will be save to [file_name_prefix subject_name '.mat']
 
 % about camera
@@ -50,10 +50,12 @@ exp_time=0.15; % secs
 [ret]=SetExposureTime(exp_time); %   Set exposure time in second
 CheckWarning(ret);
 
+cd CameraCode\
 figure('Units','pixels','position',[0 0  1000 600]);
 ti=tiledlayout(1,2,'TileSpacing','compact','Padding','none');
 hSum=fun_take_picture_and_return_hSum(XPixels/HBin,YPixels,SDS_location);
 title(ti,[subject_name ' image mode']);
+cd ..
 print(fullfile(output_dir,['image_' subject_name '.png']),'-dpng','-r400');
 save(fullfile(output_dir,['hSum_' subject_name '.txt']),'hSum','-ascii','-tabs');
 

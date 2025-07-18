@@ -32,7 +32,7 @@ CheckWarning(ret);
 CheckWarning(ret);
 
 %% take one image
-exp_time=0.03; % secs
+exp_time=3; % secs
 [ret]=SetExposureTime(exp_time); %   Set exposure time in second
 CheckWarning(ret);
 
